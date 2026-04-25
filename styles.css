@@ -1,0 +1,324 @@
+/* ─── Base ──────────────────────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+body { -webkit-font-smoothing: antialiased; }
+
+/* ─── Reveal-on-scroll ──────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── Store buttons ─────────────────────────────────────────────────── */
+.store-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: 14px;
+  background: #1A1A1A;
+  color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.store-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.3);
+}
+.store-btn-light {
+  background: white;
+  color: #1A1A1A;
+}
+.store-btn-light:hover {
+  box-shadow: 0 12px 32px -8px rgba(0, 0, 0, 0.4);
+}
+
+/* ─── Phone mockup ──────────────────────────────────────────────────── */
+.phone-frame {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 280px;
+  height: 480px;
+  background: #1C2B1E;
+  border-radius: 36px;
+  padding: 12px;
+  box-shadow: 0 30px 80px -20px rgba(28, 43, 30, 0.4),
+              0 0 0 4px #0F1A11;
+  animation: phoneFloat 6s ease-in-out infinite;
+}
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(180deg, #2F4F2F 0%, #1C2B1E 100%);
+  border-radius: 26px;
+  padding: 16px;
+  color: white;
+  overflow: hidden;
+}
+.phone-status {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  opacity: 0.5;
+  margin-bottom: 16px;
+}
+.phone-content { font-size: 13px; }
+.phone-entry {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ─── Floating cards ────────────────────────────────────────────────── */
+.float-card {
+  position: absolute;
+  background: white;
+  padding: 12px 16px;
+  border-radius: 14px;
+  box-shadow: 0 12px 32px -8px rgba(28, 43, 30, 0.18);
+  border: 1px solid rgba(28, 43, 30, 0.06);
+  width: 180px;
+  animation: cardFloat 5s ease-in-out infinite;
+}
+.float-card-1 {
+  top: 12%;
+  left: -8%;
+  animation-delay: 0s;
+}
+.float-card-2 {
+  top: 50%;
+  right: -10%;
+  animation-delay: 1.5s;
+}
+.float-card-3 {
+  bottom: 8%;
+  left: 0;
+  animation-delay: 3s;
+}
+
+@keyframes phoneFloat {
+  0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+  50%      { transform: translate(-50%, -50%) translateY(-10px); }
+}
+@keyframes cardFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-8px); }
+}
+
+.progress-bar {
+  animation: progress 3s ease-in-out infinite;
+}
+@keyframes progress {
+  0%, 100% { width: 30%; }
+  50%      { width: 90%; }
+}
+
+.typing::after {
+  content: "|";
+  animation: blink 1s infinite;
+  color: #1C2B1E;
+  font-weight: 700;
+}
+@keyframes blink {
+  0%, 50%   { opacity: 1; }
+  51%, 100% { opacity: 0; }
+}
+
+/* ─── Step cards ────────────────────────────────────────────────────── */
+.step-card {
+  position: relative;
+  background: white;
+  border-radius: 24px;
+  padding: 32px;
+  border: 1px solid rgba(28, 43, 30, 0.06);
+  box-shadow: 0 4px 24px -8px rgba(28, 43, 30, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 20px 48px -12px rgba(28, 43, 30, 0.18);
+}
+.step-num {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #E8EBE5;
+  color: #1C2B1E;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+}
+
+/* ─── Scan demo (step 1) ────────────────────────────────────────────── */
+.scan-demo {
+  position: relative;
+  background: #FAF7F2;
+  border-radius: 12px;
+  padding: 20px;
+  height: 140px;
+  overflow: hidden;
+}
+.scan-receipt {
+  background: white;
+  border-radius: 6px;
+  padding: 12px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.receipt-line {
+  height: 6px;
+  background: #E8EBE5;
+  border-radius: 3px;
+}
+.scan-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 30px;
+  background: linear-gradient(180deg,
+    rgba(28, 43, 30, 0) 0%,
+    rgba(28, 43, 30, 0.3) 80%,
+    rgba(28, 43, 30, 0.8) 100%);
+  border-bottom: 2px solid #1C2B1E;
+  animation: scanBeam 2.5s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes scanBeam {
+  0%        { transform: translateY(-30px); opacity: 0; }
+  20%, 80%  { opacity: 1; }
+  100%      { transform: translateY(140px); opacity: 0; }
+}
+
+/* ─── Extracted rows (step 2) ───────────────────────────────────────── */
+.extract-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  background: #FAF7F2;
+  padding: 10px 14px;
+  border-radius: 10px;
+  opacity: 0;
+  animation: extractIn 0.6s ease-out forwards;
+}
+.step-card.visible .extract-row { animation-play-state: running; }
+@keyframes extractIn {
+  from { opacity: 0; transform: translateX(-12px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* ─── Chat bubbles (step 3) ─────────────────────────────────────────── */
+.chat-bubble {
+  padding: 10px 14px;
+  border-radius: 14px;
+  font-size: 13px;
+  max-width: 80%;
+  opacity: 0;
+  animation: bubbleIn 0.5s ease-out forwards;
+}
+.chat-bubble.user {
+  background: #1C2B1E;
+  color: white;
+  border-bottom-right-radius: 4px;
+  margin-left: auto;
+}
+.chat-bubble.ai {
+  background: #FAF7F2;
+  color: #1A1A1A;
+  border-bottom-left-radius: 4px;
+}
+@keyframes bubbleIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Feature cards ─────────────────────────────────────────────────── */
+.feature-card {
+  background: white;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(28, 43, 30, 0.06);
+  transition: all 0.3s ease;
+}
+.feature-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(28, 43, 30, 0.15);
+  box-shadow: 0 16px 40px -12px rgba(28, 43, 30, 0.15);
+}
+.feature-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 14px;
+  background: #E8EBE5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
+}
+.feature-card:hover .feature-icon { transform: rotate(-5deg) scale(1.1); }
+
+/* ─── Pricing cards ─────────────────────────────────────────────────── */
+.price-card {
+  background: white;
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(28, 43, 30, 0.08);
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+.price-card:hover { transform: translateY(-4px); }
+.price-card-featured {
+  background: #1C2B1E;
+  color: white;
+  border-color: #1C2B1E;
+  transform: scale(1.04);
+}
+.price-card-featured:hover { transform: scale(1.04) translateY(-4px); }
+
+/* ─── Legal pages (terms.html / privacy.html) ───────────────────────── */
+.legal-section {
+  background: white;
+  border-radius: 18px;
+  padding: 28px;
+  margin-bottom: 16px;
+  border: 1px solid rgba(28, 43, 30, 0.06);
+  box-shadow: 0 2px 12px -4px rgba(28, 43, 30, 0.05);
+}
+.legal-section h3 {
+  font-size: 17px;
+  font-weight: 700;
+  color: #1C2B1E;
+  margin-bottom: 12px;
+}
+.legal-section p {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #374151;
+  white-space: pre-line;
+}
+
+/* ─── Mobile tweaks ─────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .phone-frame { display: none; }
+  .price-card-featured { transform: none; }
+  .price-card-featured:hover { transform: translateY(-4px); }
+}
